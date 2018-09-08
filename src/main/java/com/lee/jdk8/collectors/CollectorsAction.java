@@ -8,10 +8,10 @@ public class CollectorsAction {
             new Dish("pork", false, 800, Dish.Type.MEAT),
             new Dish("beef", false, 700, Dish.Type.MEAT),
             new Dish("chicken", false, 400, Dish.Type.MEAT),
-            new Dish("fresh fries", true, 530, Dish.Type.OTHER),
-            new Dish("rice", true, 350, Dish.Type.OTHER),
+            new Dish("fresh fries", false, 530, Dish.Type.OTHER),
+            new Dish("rice", false, 350, Dish.Type.OTHER),
             new Dish("season fruit", true, 120, Dish.Type.FRUIT),
-            new Dish("pizza", true, 550, Dish.Type.OTHER),
+            new Dish("pizza", false, 550, Dish.Type.OTHER),
             new Dish("prawns", false, 300, Dish.Type.FISH),
             new Dish("salmon", false, 450, Dish.Type.FISH)
     );
@@ -78,9 +78,11 @@ public class CollectorsAction {
      * 限定返回map的类型为treeMap
      */
     private static void testGroupingByFunctionAndSupplierAndCollector() {
-        Map<Dish.Type, Double> map = menu.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.averagingInt(Dish::getKaluli)));
+        Map<Dish.Type, Double> map = menu.stream().collect(
+                Collectors.groupingBy(Dish::getType, Collectors.averagingInt(Dish::getKaluli)));
         System.out.println(map.getClass());//HashMap
-        map = menu.stream().collect(Collectors.groupingBy(Dish::getType, TreeMap::new, Collectors.averagingInt(Dish::getKaluli)));
+        map = menu.stream().collect(
+                Collectors.groupingBy(Dish::getType, TreeMap::new, Collectors.averagingInt(Dish::getKaluli)));
         System.out.println(map.getClass());//TreeMap
         Optional.of(map).ifPresent(System.out::println);
     }

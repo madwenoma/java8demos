@@ -2,8 +2,9 @@ package com.lee.jdk8.collectors;
 
 public class Dish {
     String name;
-    boolean is;
+    boolean isFruit;
     int kaluli;
+
     enum Type {
         FISH,
         MEAT,
@@ -13,9 +14,9 @@ public class Dish {
 
     Type type;
 
-    public Dish(String name, boolean is, int kaluli, Type type) {
+    public Dish(String name, boolean isFruit, int kaluli, Type type) {
         this.name = name;
-        this.is = is;
+        this.isFruit = isFruit;
         this.kaluli = kaluli;
         this.type = type;
     }
@@ -28,12 +29,12 @@ public class Dish {
         this.name = name;
     }
 
-    public boolean isIs() {
-        return is;
+    public boolean isFruit() {
+        return isFruit;
     }
 
-    public void setIs(boolean is) {
-        this.is = is;
+    public void setFruit(boolean fruit) {
+        isFruit = fruit;
     }
 
     public int getKaluli() {
@@ -56,7 +57,7 @@ public class Dish {
     public String toString() {
         return "Dish{" +
                 "name='" + name + '\'' +
-                ", is=" + is +
+                ", is=" + isFruit +
                 ", kaluli=" + kaluli +
                 ", type=" + type +
                 '}';
