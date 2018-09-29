@@ -10,6 +10,11 @@ public class ForkJoinTest {
         AccRecursiveTask accRecursiveTask = new AccRecursiveTask(0, data.length, data);
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         Integer result = forkJoinPool.invoke(accRecursiveTask);
-        System.out.println(result);
+        System.out.println("AccRecursiveTask get result:" + result);
+
+        AccRecursiveAction accRecursiveAction = new AccRecursiveAction(0, data.length, data);
+        forkJoinPool.invoke(accRecursiveAction);
+        result = AccRecursiveAction.AccHelper.getResult();
+        System.out.println("AccRecursiveAction get result:" + result);
     }
 }
